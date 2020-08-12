@@ -1,4 +1,4 @@
-# oms_new
+# antd(vue)-admin
 
 ## Project setup
 ```
