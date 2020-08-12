@@ -1,32 +1,54 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <a-locale-provider :locale="locale">
+      <router-view />
+    </a-locale-provider>
   </div>
 </template>
 
-<style>
+<script>
+import zh_CN from "ant-design-vue/lib/locale-provider/zh_CN";
+import moment from "moment";
+import { ConfigProvider } from "ant-design-vue";
+import "moment/locale/zh-cn";
+export default {
+  components: {
+    "a-locale-provider": ConfigProvider
+  },
+  data() {
+    return {
+      locale: zh_CN
+    };
+  },
+  mounted() {
+    this.$bus.$on("change-lang", lang => {
+      switch (lang) {
+        case "zh-cn":
+          this.locale = zh_CN;
+          moment.locale("zh-cn");
+          this.$i18n.locale = "zh";
+          break;
+        case "en":
+          this.locale = null;
+          this.$i18n.locale = "en";
+          moment.locale("en");
+          break;
+        case "th":
+          this.locale = null;
+          this.$i18n.locale = "th";
+          moment.locale("th");
+          break;
+        default:
+          this.locale = zh_CN;
+          moment.locale("zh-cn");
+      }
+    });
+  }
+};
+</script>
+
+<style lang="scss" scoped>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+  height: 100%;
 }
 </style>
