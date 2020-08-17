@@ -10,7 +10,6 @@ import Th from "./assets/lang/th";
 import VueI18n from "vue-i18n";
 import "./utils/antd";
 import "./assets/css/reset.css";
-import "./assets/css/mixin.scss";
 Vue.config.productionTip = false;
 Vue.prototype.$bus = new Vue();
 Vue.use(VueI18n);

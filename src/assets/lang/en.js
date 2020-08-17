@@ -7,6 +7,7 @@ export default {
     originalAfterSales: "OriginalAfterSales",
     omsAfterSales: "OMSAfterSales",
     batchModifyOrder: "BatchModifyOrder",
-    returnToStorage: "ReturnToStorage"
+    returnToStorage: "ReturnToStorage",
+    orderEntry: "OrderEntry"
   }
 };

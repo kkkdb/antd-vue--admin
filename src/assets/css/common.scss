@@ -1,0 +1,41 @@
+@import "./mixin.scss";
+.text-info {
+  color: $link-color;
+}
+.text-danger {
+  color: $error-color;
+}
+#app .ant-btn {
+  border-radius: 0;
+  & + .ant-btn {
+    margin-left: 10px;
+  }
+}
+.operation-content {
+  margin-bottom: 10px;
+}
+.form-content {
+  background: #fff;
+  padding: 16px 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  .ant-input,
+  .ant-select,
+  .ant-select-selection {
+    border-radius: 0;
+  }
+}
+.ant-form-inline .ant-form-item {
+  width: 100%;
+}
+.table-content {
+  background: #fff;
+  .table-header .ant-tabs-bar {
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+}
+// .ant-table-thead > tr > th,
+// .ant-table-tbody > tr > td {
+//   padding: 8px 16px !important;
+// }

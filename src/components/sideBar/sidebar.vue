@@ -14,13 +14,19 @@
       <template v-for="item in menu_list">
         <a-sub-menu :key="item.view" v-if="item.children.length">
           <span slot="title">
+            <a-icon :type="item.icon" />
             <span>{{ $t(`menu.${item.view}`) }}</span>
           </span>
           <template v-for="elem in item.children">
-            <a-menu-item :key="elem.view">{{$t(`menu.${elem.view}`)}}</a-menu-item>
+            <a-menu-item :key="elem.view">
+              {{
+              $t(`menu.${elem.view}`)
+              }}
+            </a-menu-item>
           </template>
         </a-sub-menu>
         <a-menu-item :key="item.view" v-else>
+          <a-icon :type="item.icon" />
           <span>{{ $t(`menu.${item.view}`) }}</span>
         </a-menu-item>
       </template>
@@ -30,7 +36,7 @@
 
 <script>
 import { Menu } from "ant-design-vue";
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "Sidebar",
@@ -41,7 +47,7 @@ export default {
     "a-menu-item": Menu.Item
   },
   computed: {
-    ...mapState(["menu_list"])
+    ...mapState(["menu_list", "panes"])
   },
   data() {
     return {
@@ -52,6 +58,7 @@ export default {
     this.handleMenuOpenedKeys();
   },
   methods: {
+    ...mapMutations(["setState"]),
     handleMenuOpenedKeys() {
       this.openKeys = [
         this.$route.path.replace(/[^/]+(?!.*\/)/, "").replace(/\//g, "")
@@ -74,6 +81,10 @@ export default {
     },
     handleMenuClick(route) {
       if (route.key === this.$route.name) return;
+      if (!this.panes.includes(route.key)) {
+        this.panes.push(route.key);
+        this.setState({ panes: this.panes });
+      }
       this.$router.push({ name: route.key });
     }
   }

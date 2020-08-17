@@ -22,7 +22,7 @@ module.exports = {
     config.resolve.alias
       //第一个参数：别名 第二个参数：路径
       .set("@components", resolve("src/components"))
-      .set("@img", resolve("src/img"))
+      .set("@assets", resolve("src/assets"))
       .set("@common", resolve("src/common"))
       .set("@views", resolve("src/views"));
   }

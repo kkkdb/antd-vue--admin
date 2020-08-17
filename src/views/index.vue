@@ -4,38 +4,66 @@
       <sidebar :collapsed="collapsed"></sidebar>
     </a-layout-sider>
     <a-layout>
-      <a-layout-header style="background: #fff; padding: 0">
+      <a-layout-header style="background: #fff; padding: 0;height:90px;">
         <topbar :collapsed="collapsed" @changeCollapsed="changeCollapsed"></topbar>
+        <aliveTab></aliveTab>
       </a-layout-header>
-      <a-layout-content :style="{
-          margin: '16px'
-        }">
-        <router-view></router-view>
+      <a-layout-content :style="{ margin: '10px 16px 16px 16px' }">
+        <keep-alive :exclude="excludename">
+          <router-view v-if="isRouterAlive"></router-view>
+        </keep-alive>
       </a-layout-content>
     </a-layout>
   </a-layout>
 </template>
 <script>
+import { mapState, mapMutations } from "vuex";
 import { Layout } from "ant-design-vue";
-import sidebar from "@components/sidebar";
-import topbar from "@components/topbar";
+import sidebar from "@components/sideBar/sidebar";
+import aliveTab from "@components/topBar/aliveTab";
+import topbar from "@components/topBar/topbar";
 export default {
   components: {
     sidebar,
     topbar,
+    aliveTab,
     "a-layout": Layout,
     "a-layout-sider": Layout.Sider,
     "a-layout-header": Layout.Header,
     "a-layout-content": Layout.Content
   },
+  computed: {
+    ...mapState(["exclude"])
+  },
   data() {
     return {
-      collapsed: false
+      excludename: "",
+      collapsed: false,
+      isRouterAlive: true
     };
   },
   methods: {
+    ...mapMutations(["setState"]),
     changeCollapsed() {
       this.collapsed = !this.collapsed;
+    },
+    reload(newVal) {
+      this.isRouterAlive = false;
+      this.excludename = newVal;
+      this.$nextTick(() => {
+        this.excludename = null;
+        this.setState({
+          exclude: null
+        });
+        this.isRouterAlive = true;
+      });
+    }
+  },
+  watch: {
+    exclude(newVal) {
+      if (newVal) {
+        this.reload(newVal);
+      }
     }
   }
 };

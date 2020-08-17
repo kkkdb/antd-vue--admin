@@ -4,6 +4,10 @@
 
 <script>
 export default {
-  name: "Demo"
+  name: "Demo",
+  data() {
+    return {};
+  },
+  methods: {}
 };
 </script>

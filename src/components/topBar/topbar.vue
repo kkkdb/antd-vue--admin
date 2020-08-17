@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import langMenu from "./topMenu/lang";
-import userMenu from "./topMenu/user";
+import langMenu from "./children/lang";
+import userMenu from "./children/user";
 export default {
   name: "Topbar",
   props: ["collapsed"],
@@ -37,14 +37,14 @@ export default {
 <style lang="scss" scoped>
 .topbar {
   width: 100%;
-  height: 100%;
+  height: 50px;
   background: #fff;
   display: flex;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
   justify-content: space-between;
   .trigger {
     font-size: 18px;
-    line-height: 64px;
+    line-height: 50px;
     padding: 0 24px;
     cursor: pointer;
     transition: color 0.3s;

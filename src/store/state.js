@@ -7,13 +7,21 @@ export default {
     sex: 1,
     avatar: "//www.gravatar.com/avatar/ae6d4e19f36583b6c0fb717e654b45a9?s=200&r=pg&d=mm"
   },
+  exclude: null,
+  panes: JSON.parse(localStorage.getItem("panes")) || ["dashboard"],
+  pagination_setting: {
+    showSizeChanger: true,
+    pageSizeOptions: ["10", "20", "30", "40"]
+  },
   menu_list: [
     {
       view: "dashboard",
+      icon: "dashboard",
       children: []
     },
     {
       view: "orderManage",
+      icon: "unordered-list",
       children: [
         {
           view: "originalOrders"

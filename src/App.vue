@@ -52,3 +52,7 @@ export default {
   height: 100%;
 }
 </style>
+
+<style lang="scss">
+@import "./assets/css/common.scss";
+</style>

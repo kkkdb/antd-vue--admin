@@ -1,1 +1,4 @@
-export const baseURL = "/oms_api/";
+let baseURL = "/oms_api/";
+export default {
+  baseURL
+};

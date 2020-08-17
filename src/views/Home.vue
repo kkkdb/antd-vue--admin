@@ -1,14 +1,17 @@
 <template>
   <div class="home">
+    <navBar />
     <img alt="Vue logo" src="../assets/image/logo.png" />
     Dashboard
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-
+import navBar from "@components/navBar";
 export default {
-  name: "Home"
+  name: "Home",
+  components: {
+    navBar
+  }
 };
 </script>

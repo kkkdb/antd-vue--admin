@@ -7,6 +7,7 @@ export default {
     originalAfterSales: "สั่งซื้อหลังการขายต้นฉบับ",
     omsAfterSales: "สั่งซื้อหลังการขาย OMS",
     batchModifyOrder: "ปรับเปลี่ยนคำสั่งเป็นกลุ่ม",
-    returnToStorage: "คืนสินค้าในคลังสินค้า"
+    returnToStorage: "คืนสินค้าในคลังสินค้า",
+    orderEntry: "รายการสั่งซื้อ"
   }
 };

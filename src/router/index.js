@@ -1,12 +1,13 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
-import originalOrders from "../views/orderManage/originalOrders.vue";
-import omsOrders from "../views/orderManage/omsOrders.vue";
-import originalAfterSales from "../views/orderManage/afterSaleManage/originalAfterSales.vue";
-import omsAfterSales from "../views/orderManage/afterSaleManage/omsAfterSales.vue";
-import batchModifyOrder from "../views/orderManage/batchModifyOrder.vue";
-import returnToStorage from "../views/orderManage/afterSaleManage/returnToStorage.vue";
+import Home from "../views/Home";
+import originalOrders from "../views/orderManage/originalOrders";
+import omsOrders from "../views/orderManage/omsOrders";
+import originalAfterSales from "../views/orderManage/afterSaleManage/originalAfterSales";
+import omsAfterSales from "../views/orderManage/afterSaleManage/omsAfterSales";
+import batchModifyOrder from "../views/orderManage/batchModifyOrder";
+import returnToStorage from "../views/orderManage/afterSaleManage/returnToStorage";
+import orderEntry from "../views/orderManage/orderEntry/orderEntry.vue";
 
 Vue.use(VueRouter);
 
@@ -51,6 +52,11 @@ const routes = [
         path: "orderManage/returnToStorage",
         name: "returnToStorage",
         component: returnToStorage
+      },
+      {
+        path: "orderManage/orderEntry",
+        name: "orderEntry",
+        component: orderEntry
       }
     ]
   },
